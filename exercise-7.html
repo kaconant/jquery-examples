@@ -20,6 +20,16 @@
     });
 
     */
+    $(function () {
+      $("#add-button").click(function() {
+        var newText = $("#description").val();
+        $("#todo-list").append("<li>" + newText + "</li>")
+      });
+      $("#todo-list").on ("click", ".remover", function() {
+        $(this).parents("li").remove();
+      });
+    });
+
     </script>
     <style>
     #wrapper {

@@ -21,13 +21,21 @@
 
     */
     $(function () {
+      // ability to add task and clear input
       $("#add-button").click(function() {
         var newText = $("#description").val();
-        $("#todo-list").append("<li>" + newText + "</li>")
+        $("#todo-list").append("<li> <button class='remove'>X</button> <input class='check' type='checkbox'/> <span> " + newText + "</span> </li>")
+        $("#description").val("");
       });
-      $("#todo-list").on ("click", ".remover", function() {
+      // ability to use x to delete task
+      $("#todo-list").on("click", ".remove", function() {
         $(this).parents("li").remove();
       });
+      $("#todo-list").on("click", ".check", function() {
+        var strike = $(this).val();
+        $(this).parents("li").find("span").toggleClass("strike");
+      });
+      
     });
 
     </script>
@@ -40,6 +48,15 @@
     #description, #search, #todo-list {
       font-size: 1.5em;
     }
+
+    ul {
+    list-style-type: none;
+    }
+
+    .strike {
+    text-decoration: line-through;
+    }
+
     </style>
   </head>
   <body>
@@ -47,7 +64,6 @@
       <input id="description" type="text" name="description">
       <button id="add-button">Add Task</button>
       <ul id="todo-list">
-        <li>Feed the cat</li>
       </ul>
     </div>
   </body>

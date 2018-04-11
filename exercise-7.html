@@ -20,22 +20,27 @@
     });
 
     */
+
     $(function () {
       // ability to add task and clear input
       $("#add-button").click(function() {
         var newText = $("#description").val();
-        $("#todo-list").append("<li> <button class='remove'>X</button> <input class='check' type='checkbox'/> <span> " + newText + "</span> </li>")
+        $("#todo-list").append("<li> <input class='check' type='checkbox'/> <span>" + newText + "</span> <button class='remove'>Remove</button> <button class='edit'>Edit </button> </li>")
         $("#description").val("");
       });
       // ability to use x to delete task
       $("#todo-list").on("click", ".remove", function() {
         $(this).parents("li").remove();
       });
+      // ability to strike through 
       $("#todo-list").on("click", ".check", function() {
         var strike = $(this).val();
         $(this).parents("li").find("span").toggleClass("strike");
       });
-      
+      // button that allows you to changes the words to input, allows you to click edit and change input
+      $("#todo-list").on(".dblclick", ".edit", function() {
+        $(this).parents("li").val();
+      });
     });
 
     </script>

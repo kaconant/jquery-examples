@@ -11,13 +11,27 @@
     and append a new <li> element to the #log with the entered text value.
     HINT: lookup .val()
     */
+    // short hand of document.ready
     $(function () {
       $("#clear-button").click(function() {
         $("#text-field").val("");
       });
       $("#save-button").click(function() {
         var newText = $("#text-field").val();
-        $("#log").append("<li>" + newText + "</li>")
+        $("#log").append("<li>" + newText + "</li>");
+        $("#text-field").val("");
+        $("#text-field").focus();
+        /* OR after var newTest
+        var el = $("li");
+        el.html(newText);
+        $("#log").append(el);
+        OR
+        var el = '
+          <li>
+            ${text}
+          </li>
+          '
+        */
       });
     });
     </script>
